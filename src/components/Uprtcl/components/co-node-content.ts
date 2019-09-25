@@ -1,6 +1,6 @@
 import { LitElement, html, css, property, customElement } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
-import { store } from '../store';
+import store from './../../../configureStore';
 import { Block, NodeType } from '../types';
 import { setContent, enter, indentLeft, removeBlock } from '../actions/editor';
 

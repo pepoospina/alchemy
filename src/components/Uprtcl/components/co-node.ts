@@ -1,6 +1,7 @@
 import { LitElement, html, css, property, customElement } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
-import { store, RootState } from '../store';
+import store from './../../../configureStore';
+import { IRootState } from './../../../reducers/index';
 import {} from '../actions/app';
 import { Block } from '../types';
 import { blockSelector } from '../reducers/editor';
@@ -35,12 +36,12 @@ export class CoNode extends connect(store)(LitElement) {
   loggedUser: string;
 
   // Local reference to the state, needed to select the block after an attribute update 
-  state: RootState; 
+  state: IRootState; 
 
-  stateChanged(state: RootState) {
+  stateChanged(state: IRootState) {
     // console.log(`[CO-NODE] stateChanged()`, this.nodeId, this.block)
-    this.block = blockSelector(state.editor, this.nodeId);
-    this.loggedUser = state.app.ethAccount;
+    this.block = blockSelector(state.uprtclEditor, this.nodeId);
+    this.loggedUser = state.uprtclApp.ethAccount;
     this.state = state;
   }
 
@@ -50,12 +51,12 @@ export class CoNode extends connect(store)(LitElement) {
 
   firstUpdated() {
     this.addEventListener('keydown', this.onKeydown);
-    this.block = blockSelector(this.state.editor, this.nodeId);
+    this.block = blockSelector(this.state.uprtclEditor, this.nodeId);
   }
 
   updated() {
     // console.log(`[CO-NODE] updated()`, this.nodeId, this.block)
-    this.block = blockSelector(this.state.editor, this.nodeId);
+    this.block = blockSelector(this.state.uprtclEditor, this.nodeId);
   }
 
   onFocus() {

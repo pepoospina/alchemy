@@ -6,6 +6,9 @@ import profilesReducer, { IProfilesState } from "./profilesReducer";
 import uiReducer, { IUIState } from "./uiReducer";
 import web3Reducer, { IWeb3State } from "./web3Reducer";
 
+import appReducer, { UprtclAppState } from "components/Uprtcl/reducers/app";
+import editorReducer, { UprtclEditorState } from "components/Uprtcl/reducers/editor";
+
 export interface IRootState {
   arc: IArcState;
   notifications: INotificationsState;
@@ -13,6 +16,8 @@ export interface IRootState {
   router: any;
   ui: IUIState;
   web3: IWeb3State;
+  uprtclApp: UprtclAppState;
+  uprtclEditor: UprtclEditorState;
 }
 
 const reducers = {
@@ -22,6 +27,8 @@ const reducers = {
   router: routerReducer,
   ui: uiReducer,
   web3: web3Reducer,
+  uprtclApp: appReducer,
+  uprtclEditor: editorReducer 
 };
 
 

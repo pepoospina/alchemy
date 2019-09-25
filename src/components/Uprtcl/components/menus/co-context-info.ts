@@ -1,5 +1,6 @@
 import { LitElement, customElement, property, html, css } from "lit-element";
-import { store, RootState } from './../../store';
+import store from './../../../../configureStore';
+import { IRootState } from './../../../../reducers/index';
 import { connect } from 'pwa-helpers/connect-mixin';
 import { PerspectiveFull, MergeRequest } from "../../types";
 import { uprtclData } from "../../services/uprtcl-data";
@@ -78,9 +79,9 @@ export class CoContextInfo extends connect(store)(LitElement) {
     this.loading = false;
   }
 
-  stateChanged(state: RootState) {
+  stateChanged(state: IRootState) {
     // console.log(`[CO-NODE] stateChanged()`, this.nodeId, this.block)
-    this.loggedUser = state.app.ethAccount;
+    this.loggedUser = state.uprtclApp.ethAccount;
   }
 
   providerSelected(event) {

@@ -1,5 +1,5 @@
 import { LitElement, html, css, property, customElement } from 'lit-element';
-import { store } from './../../store';
+import store from './../../../../configureStore';
 import { connect } from 'pwa-helpers/connect-mixin';
 import Popper from 'popper.js';
 

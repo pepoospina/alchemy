@@ -8,19 +8,19 @@ import {
   SET_NEW_PERSPECTIVE
 } from '../actions/editor';
 
-export interface EditorState {
+export interface UprtclEditorState {
   rootId: string;
   blocks: Dictionary<Block>;
   newPerspective: [string, string];
 }
 
-const INITIAL_STATE: EditorState = {
+const INITIAL_STATE: UprtclEditorState = {
   rootId: '',
   blocks: {},
   newPerspective: ['', '']
 };
 
-const editor: Reducer<EditorState, EditorAction> = (state = INITIAL_STATE, action) => {
+const editorReducer: Reducer<UprtclEditorState, EditorAction> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_ROOT_ID:
       return {
@@ -44,14 +44,14 @@ const editor: Reducer<EditorState, EditorAction> = (state = INITIAL_STATE, actio
   }
 };
 
-export const blockSelector = (state: EditorState, blockId: string) => {
+export const blockSelector = (state: UprtclEditorState, blockId: string) => {
   return state.blocks[blockId];
 }
 
-export const parentSelector = (state: EditorState, blockId) => {
+export const parentSelector = (state: UprtclEditorState, blockId: string) => {
   return Object.keys(state.blocks).find(key =>
     state.blocks[key].children.includes(blockId)
   );
 }
 
-export default editor;
+export default editorReducer;

@@ -1,15 +1,15 @@
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../store';
 
 import { Block, NodeType, EthHeadUpdate, HeadUpdate, MergeRequest } from '../types';
 
 import { uprtclData } from './../services/uprtcl-data';
-import { blockSelector, parentSelector, EditorState } from './../reducers/editor';
+import { blockSelector, parentSelector, UprtclEditorState } from './../reducers/editor';
 
 import { mapPerspectiveToBlock, addBlockRec } from './editor-support';
 import { hashCid } from '../services/eth/eth.support';
-import { AppState } from '../reducers/app';
+import { UprtclAppState } from '../reducers/app';
+import { IRootState } from 'reducers';
 
 export const SET_ROOT_ID = 'SET_ROOT_ID';
 export const ADD_BLOCK = 'ADD_BLOCK';
@@ -27,7 +27,7 @@ export type EditorAction =
   EditorActionUpdateBlock |
   EditorActionSetNewPerspective;
 
-type ThunkResult = ThunkAction<void, RootState, undefined, EditorAction>;
+type ThunkResult = ThunkAction<void, IRootState, undefined>;
 
 export const setRootId: ActionCreator<EditorActionSetRootId> = (rootId: string) => {
   return {
@@ -53,7 +53,7 @@ export const setNewPerspective: ActionCreator<EditorActionSetNewPerspective> = (
 
 export const navigateToNewPerspective: ActionCreator<ThunkResult> = () => {
   return async (_dispatch, getState) => {
-    let state: EditorState = getState().editor;
+    let state: UprtclEditorState = getState().uprtclEditor;
     // console.log('state.newPerspective', state.newPerspective);
     window.location.href = `./?pid=${state.newPerspective[0]}&sp=${state.newPerspective[1]}`;
   };
@@ -61,7 +61,7 @@ export const navigateToNewPerspective: ActionCreator<ThunkResult> = () => {
 
 export const addNewlyPerspective: ActionCreator<ThunkResult> = (parentId: string, index: string) => {
   return async (dispatch, getState) => {
-    let state: EditorState = getState().editor;
+    let state: UprtclEditorState = getState().uprtclEditor;
     dispatch(addExisting(state.newPerspective[0], parentId, index));    
   };
 };
@@ -96,7 +96,7 @@ export const resetRootDocument: ActionCreator<ThunkResult> = (rootDocumentId: st
 
 export const loadDocument: ActionCreator<ThunkResult> = () => async (dispatch, getState) => {
   let document = await uprtclData.getPerspectiveFull(
-    getState().editor.rootId,
+    getState().uprtclEditor.rootId,
     -1
   );
 
@@ -115,7 +115,7 @@ export const enter: ActionCreator<ThunkResult> = (
   index: number,
   last: boolean = false // used for new block under title
 ) => async (dispatch, getState) => {
-  const initNode = blockSelector(getState().editor, blockId);
+  const initNode = blockSelector(getState().uprtclEditor, blockId);
 
   switch (initNode.style) {
     case 'title':
@@ -133,7 +133,7 @@ export const enter: ActionCreator<ThunkResult> = (
     case 'paragraph':
       /** An enter on a paragraph will create an empty context *
        *  as the next-sibling of that paragraph.               */
-      const parent: Block = blockSelector(getState().editor, parentId);
+      const parent: Block = blockSelector(getState().uprtclEditor, parentId);
       if (!parent)
         throw new Error(
           `Parent perspective ${parentId} not found in the tree`
@@ -175,7 +175,7 @@ export const setStyle: ActionCreator<ThunkResult> = (
   parentId: string,
   index: number
 ) => async (dispatch, getState) => {
-  let state: EditorState = getState().editor;
+  let state: UprtclEditorState = getState().uprtclEditor;
 
   const block: Block = blockSelector(state, blockId);
   const parent: Block = blockSelector(state,parentId);
@@ -271,7 +271,7 @@ export const indentLeft: ActionCreator<ThunkResult> = (
   index: number
 ) => async (dispatch, getState) => {
 
-  let state: EditorState = getState().editor;
+  let state: UprtclEditorState = getState().uprtclEditor;
 
   const rootId = state.rootId;
 
@@ -363,7 +363,7 @@ export const mergePerspectiveRequest: ActionCreator<ThunkResult> = (
   fromPerspectiveId: string
 ) => {
   return async (_dispatch, getState) => {
-    let state: AppState = getState().app;
+    let state: UprtclAppState = getState().uprtclApp;
     
     let headUpdates = await uprtclData.merge(toPerspectiveId, [fromPerspectiveId]);
     await uprtclData.uprtcl.taskQueue.waitForAllTasks();

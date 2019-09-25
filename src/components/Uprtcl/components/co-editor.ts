@@ -1,6 +1,7 @@
 import { LitElement, html, css, property, customElement } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
-import { store, RootState } from '../store';
+import store from './../../../configureStore';
+import { IRootState } from './../../../reducers/index';
 import { pullPerspective, resetRootDocument } from '../actions/editor';
 
 import './co-node';
@@ -24,13 +25,13 @@ export class CoEditor extends connect(store)(LitElement) {
   loggedUser: string;
 
   // Local reference to the state, needed to select the block after an attribute update 
-  state: RootState; 
+  state: IRootState; 
   pulled: boolean = false;
 
-  stateChanged(state: RootState) {
-    this.tasksPending = state.app.tasksPending;
-    this.block = blockSelector(state.editor, this.rootNodeId);
-    this.loggedUser = state.app.ethAccount;
+  stateChanged(state: IRootState) {
+    this.tasksPending = state.uprtclApp.tasksPending;
+    this.block = blockSelector(state.uprtclEditor, this.rootNodeId);
+    this.loggedUser = state.uprtclApp.ethAccount;
     this.state = state;
   }
 

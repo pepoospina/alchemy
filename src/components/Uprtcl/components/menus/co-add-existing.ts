@@ -1,5 +1,5 @@
 import { LitElement, customElement, property, html, css } from "lit-element";
-import { store } from '../../store';
+import store from './../../../../configureStore';
 import { connect } from 'pwa-helpers/connect-mixin';
 import { addExisting } from "../../actions/editor";
 

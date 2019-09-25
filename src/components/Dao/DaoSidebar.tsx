@@ -129,7 +129,7 @@ export default class DaoSidebar extends React.Component<IProps, IState> {
                     })
                   }></span>
                   <img src="/assets/images/Icon/menu/chat.svg" />
-                  DAO Wall
+                  DAO Wiki
                 </Link>
               </li>
             </ul>

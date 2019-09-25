@@ -3,7 +3,7 @@ let env = 'development'
 
 export const holochainEnabled = false;
 export const c1Enabled = true;
-export const ethEnabled = true;
+export const ethEnabled = false;
 
 export const holochainServiceProvider =
   'holochain://QmTxSxPovQyWBkTRrM1gFAbtVZUAcS1oMvzkGqihbufKSs';

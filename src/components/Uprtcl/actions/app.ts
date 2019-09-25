@@ -1,7 +1,7 @@
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { RootState } from '../store';
 import { uprtclData } from './../services/uprtcl-data';
+import { IRootState } from 'reducers';
 
 export const SET_SELECTED_PROVIDER = 'SET_SELECTED_PROVIDER';
 export const SET_ETH_ACCOUNT = 'SET_ETH_ACCOUNT';
@@ -16,7 +16,7 @@ export type AppAction =
   AppActionSetEthAccount | 
   AppActionSetTasksPending;
 
-type ThunkResult = ThunkAction<void, RootState, undefined, AppAction>;
+type ThunkResult = ThunkAction<void, IRootState, undefined>;
 
 export const setSelectedProvider: ActionCreator<AppActionSetSelectedProvider> = (_selectedProvider: string) => {
   return {

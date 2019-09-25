@@ -1,6 +1,7 @@
 import { LitElement, html, css, property, customElement } from 'lit-element';
 import { connect } from 'pwa-helpers/connect-mixin.js';
-import { store, RootState } from '../store';
+import store from './../../../configureStore';
+import { IRootState } from './../../../reducers/index';
 import { setTasksPending, watchTasks, setSelectedProvider } from '../actions/app';
 
 import { NodeType } from './../types'
@@ -45,9 +46,9 @@ export class CoWorkspace extends connect(store)(LitElement) {
     return documentId;
   }
 
-  stateChanged(state: RootState) {
-    this.tasksPending = state.app.tasksPending;
-    this.serviceProvider = state.app.selectedProvider;
+  stateChanged(state: IRootState) {
+    this.tasksPending = state.uprtclApp.tasksPending;
+    this.serviceProvider = state.uprtclApp.selectedProvider;
 
     // console.log('[WORKSPACE] stateChanged', state.app);
 

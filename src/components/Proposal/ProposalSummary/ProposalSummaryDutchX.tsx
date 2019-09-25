@@ -18,16 +18,7 @@ export default class ProposalSummaryDutchX extends React.Component<IProps, null>
 
   public render(): RenderOutput {
     const { proposal, detailView, genericSchemeInfo, transactionModal } = this.props;
-    let decodedCallData: any;
-    try {
-      decodedCallData = genericSchemeInfo.decodeCallData(proposal.genericScheme.callData);
-    } catch(err) {
-      if (err.message.match(/no action matching/gi)) {
-        return <div>Error: {err.message} </div>;
-      } else {
-        throw err;
-      }
-    }
+    const decodedCallData = genericSchemeInfo.decodeCallData(proposal.genericScheme.callData);
     const action = decodedCallData.action;
 
     const proposalSummaryClass = classNames({

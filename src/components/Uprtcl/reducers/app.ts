@@ -6,19 +6,19 @@ import {
   AppAction
 } from '../actions/app';
 
-export interface AppState {
+export interface UprtclAppState {
   selectedProvider: string;
   ethAccount: string;
   tasksPending: boolean;
 }
 
-const INITIAL_STATE: AppState = {
+const INITIAL_STATE: UprtclAppState = {
   selectedProvider: '',
   ethAccount: '',
   tasksPending: false
 };
 
-const app: Reducer<AppState, AppAction> = (state = INITIAL_STATE, action) => {
+const appReducer: Reducer<UprtclAppState, AppAction> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_SELECTED_PROVIDER:
       return {
@@ -40,4 +40,4 @@ const app: Reducer<AppState, AppAction> = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default app;
+export default appReducer;

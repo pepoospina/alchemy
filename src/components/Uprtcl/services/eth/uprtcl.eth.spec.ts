@@ -161,6 +161,8 @@ describe('Ethereum Uprtcl', () => {
 
     let nonce = Math.floor(Math.random() * Math.floor(10000));
     let request: MergeRequest = {
+      toPerspectiveId: '',
+      fromPerspectiveId: '',
       nonce: nonce,
       owner: owner,
       approvedAddresses: [ approved ],

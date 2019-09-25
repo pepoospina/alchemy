@@ -116,9 +116,6 @@ class RedemptionsPage extends React.Component<IProps, null> {
       proposalsPerDao.set(dao.id, []);
     });
     proposals.forEach(proposal => {
-      if (proposalsPerDao.get(proposal.dao.id) === undefined) {
-        proposalsPerDao.set(proposal.dao.id, []);
-      }
       proposalsPerDao.get(proposal.dao.id).push(proposal);
     });
 

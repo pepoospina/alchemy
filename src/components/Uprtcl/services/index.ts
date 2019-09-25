@@ -19,7 +19,6 @@ import { DataIpfs } from './data.ipfs';
 import { DraftLocal } from './local/draft.local';
 import { TextNode } from './../types';
 
-import { store } from '../store';
 import { setEthAccount } from '../actions/app';
 
 import { 
@@ -31,6 +30,8 @@ import {
   c1ServiceProvider, 
   holochainServiceProvider, 
   ethServiceProvider } from '../config';
+
+import store from './../../../configureStore';
 
 let uprtclConfig = {};
 let dataConfig = {};

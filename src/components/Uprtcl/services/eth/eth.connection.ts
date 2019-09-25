@@ -1,4 +1,4 @@
-import * as UprtclContractArtifact from './Uprtcl.json';
+let UprtclContractArtifact = require('./Uprtcl.json');
 import { userService } from './../user/user.service.imp'
 import { uprtclMultiplatform } from '../index';
 import { ethServiceProvider } from '../../config';
