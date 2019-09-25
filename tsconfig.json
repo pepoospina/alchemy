@@ -8,7 +8,8 @@
       "esnext.asynciterable"
     ],
     "sourceMap": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
     "module": "commonjs",
     "target": "es6",
     "jsx": "react",
