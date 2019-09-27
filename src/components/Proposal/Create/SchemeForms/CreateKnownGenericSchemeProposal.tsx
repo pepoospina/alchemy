@@ -390,7 +390,7 @@ class CreateKnownSchemeProposal extends React.Component<IProps, IState> {
                       Cancel
                     </button>
                     <button className={css.submitProposal} type="submit" disabled={isSubmitting}>
-                      Submit proposal
+                      Submit proposal x
                     </button>
                   </div>
                 </Form>

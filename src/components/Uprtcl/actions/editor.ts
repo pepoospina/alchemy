@@ -10,6 +10,8 @@ import { mapPerspectiveToBlock, addBlockRec } from './editor-support';
 import { hashCid } from '../services/eth/eth.support';
 import { UprtclAppState } from '../reducers/app';
 import { IRootState } from 'reducers';
+import { IProposalCreateOptions } from '@daostack/client';
+// import { createProposal } from './../../../actions/arcActions';
 
 export const SET_ROOT_ID = 'SET_ROOT_ID';
 export const ADD_BLOCK = 'ADD_BLOCK';
@@ -362,7 +364,7 @@ export const mergePerspectiveRequest: ActionCreator<ThunkResult> = (
   toPerspectiveId: string,
   fromPerspectiveId: string
 ) => {
-  return async (_dispatch, getState) => {
+  return async (dispatch, getState) => {
     let state: UprtclAppState = getState().uprtclApp;
     
     let headUpdates = await uprtclData.merge(toPerspectiveId, [fromPerspectiveId]);
@@ -392,7 +394,18 @@ export const mergePerspectiveRequest: ActionCreator<ThunkResult> = (
       nonce: 0
     }
 
-    await uprtclData.uprtcl.createMergeRequestIn(request, toPerspective.origin);
+    let requestId = await uprtclData.uprtcl.createMergeRequestIn(request, toPerspective.origin);
+    
+    /** create proposal */
+    let proposalOptions : IProposalCreateOptions = {
+      title: `Authorize request ${requestId}`,
+      description: `This proposal was automatically generated`,
+      callData: `authorizeRequest(${requestId})`,
+      dao: '',
+      scheme: ''
+    }
+    console.log({proposalOptions});
+    // dispatch(createProposal(proposalOptions));
   };
 };
 

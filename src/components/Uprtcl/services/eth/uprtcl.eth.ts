@@ -222,10 +222,12 @@ export class UprtclEthereum implements UprtclService {
 
   async createMergeRequest(request: MergeRequest): Promise<string> {
     /** TX is sent, and await to force order (preent head update on an unexisting perspective) */
+    let toPerspectiveIdHash = await hashCid(request.toPerspectiveId)
+    let fromPerspectiveIdHash = await hashCid(request.fromPerspectiveId)
     await this.ethereum.send(
       INIT_REQUEST, 
-      [ await hashCid(request.toPerspectiveId), 
-        await hashCid(request.fromPerspectiveId), 
+      [ toPerspectiveIdHash, 
+        fromPerspectiveIdHash, 
         request.owner, 
         request.nonce, 
         request.headUpdates, 
@@ -237,14 +239,14 @@ export class UprtclEthereum implements UprtclService {
 
     /** check logs to get the requestId (batchId) */
     let batchCreatedEvents = await this.ethereum.uprtclInstance.getPastEvents(
-      'RequestCreated', {
-        filter: { owner: request.owner},
+      'MergeRequestCreated', {
+        filter: { toPerspectiveIdHash: toPerspectiveIdHash, fromPerspectiveIdHash: fromPerspectiveIdHash },
         fromBlock: 0
       }
     )
 
-    let batchId = batchCreatedEvents.filter(e => parseInt(e.returnValues.nonce) === request.nonce)[0].returnValues.batchId;
-    return batchId;
+    let requestId = batchCreatedEvents.filter(e => parseInt(e.returnValues.nonce) === request.nonce)[0].returnValues.requestId;
+    return requestId;
   }
 
   async getMergeRequest(requestId: string): Promise<MergeRequest> {

@@ -202,8 +202,8 @@ class CreateGenericScheme extends React.Component<IProps, null> {
                   Cancel
                 </button>
                 <button className={css.submitProposal} type="submit" disabled={isSubmitting}>
-                  Submit proposal
-                </button>
+                  Submit proposal x
+                </button> 
               </div>
             </Form>
           }

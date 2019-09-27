@@ -4,6 +4,8 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import * as Sticky from "react-stickynode";
 import * as css from "./Dao.scss";
 import './../Uprtcl/components/co-editor';
+// import store from './../../configureStore';
+// import { createProposal } from "./../../actions/arcActions";
 
 interface IProps {
   dao: IDAOState;
