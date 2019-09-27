@@ -42,7 +42,7 @@ export interface MergeRequest {
 export const PropertyOrder = {
   Perspective: ['origin', 'creatorId', 'timestamp', 'context', 'name'],
   Commit: ['creatorId', 'timestamp', 'message', 'parentsIds', 'dataId'],
-  TextNode: ['text', 'type', 'links']
+  TextNode: ['text', 'links', 'doc_node_type']
 };
 
 export interface TextNode {

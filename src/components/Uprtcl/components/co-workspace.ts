@@ -93,10 +93,10 @@ export class CoWorkspace extends connect(store)(LitElement) {
   protected render() {
     if (this.documentPerspectiveId === '') {
       return html`
-        <link rel="stylesheet" href="./images/tw.css">
+        <link rel="stylesheet" href="/assets/uprtcl/tw.css">
         <div class='welcome'>
           <a href='https://github.com/uprtcl/spec' target='_blank' class='logo'>
-            <img src='./images/app/sticker2.png'/>
+            <img src='/assets/uprtcl/sticker2.png'/>
           </a>
           <div class='form'>
             ${!this.creatingDocument ? 

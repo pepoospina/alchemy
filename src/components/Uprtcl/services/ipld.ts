@@ -1,6 +1,6 @@
-import CID from 'cids';
-import multihashing from 'multihashing-async';
-import Buffer from 'buffer/';
+var CID = require('cids');
+var multihashing = require('multihashing-async');
+var Buffer = require('buffer/');
 import { CidConfig } from './cid.config';
 
 export class IpldService {

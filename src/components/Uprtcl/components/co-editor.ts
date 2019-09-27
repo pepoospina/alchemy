@@ -41,6 +41,7 @@ export class CoEditor extends connect(store)(LitElement) {
   }
   
   async firstUpdated() {
+    console.log('CO-EDITOR firstUpdated', {rootNodeId: this.rootNodeId});
     store.dispatch(resetRootDocument(this.rootNodeId));
   }
 

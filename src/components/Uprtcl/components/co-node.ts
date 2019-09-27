@@ -118,7 +118,7 @@ export class CoNode extends connect(store)(LitElement) {
     const containerClasses = [focusClasses].join(' ')
 
     return html`
-      <link rel="stylesheet" href="./images/tw.css">
+      <link rel="stylesheet" href="/assets/uprtcl/tw.css">
       <div class=${containerClasses}>
         <div class=${nodeRowClasses}>
           <div class="node-content"

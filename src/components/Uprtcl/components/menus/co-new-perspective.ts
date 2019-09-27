@@ -41,7 +41,7 @@ export class CoNewPerspective extends connect(store)(LitElement) {
 
   render() {
     return html`
-      <link rel="stylesheet" href="./images/tw.css">
+      <link rel="stylesheet" href="/assets/uprtcl/tw.css">
       <div class='row create-row'>
         <div class='input-div'>
           <input id='PERSPECTIVE_NAME' class='border-gray-600 border-b' placeholder='name (required)' />

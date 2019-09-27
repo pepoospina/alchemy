@@ -11,6 +11,14 @@ import { sleep } from "lib/util";
 import { history, default as store } from "./configureStore";
 import * as css from "./layouts/App.scss";
 
+declare global {
+  namespace JSX {
+      interface IntrinsicElements {
+          'co-editor': any;
+      }
+  }
+}
+
 export class App extends React.Component<{}, {
   arcIsInitialized: boolean;
   retryingArc: boolean;

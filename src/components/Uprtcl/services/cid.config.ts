@@ -1,5 +1,5 @@
-import CID from 'cids';
-import multihashing from 'multihashing-async';
+var CID = require('cids');
+var multihashing = require('multihashing-async');
 
 export class CidConfig {
   base: string;

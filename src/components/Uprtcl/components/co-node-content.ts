@@ -133,7 +133,7 @@ export class CoNodeContent extends connect(store)(LitElement) {
     watermarkClasses = [watermarkClasses, 'text-gray-400'].join(' ');
 
     return html`
-      <link rel="stylesheet" href="./images/tw.css">
+      <link rel="stylesheet" href="/assets/uprtcl/tw.css">
       <div class=${containerClasses}>
         <co-content-editable 
           id='CONTENT_EDITABLE'

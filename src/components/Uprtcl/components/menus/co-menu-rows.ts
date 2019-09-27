@@ -35,7 +35,7 @@ export class CoMenuRows extends LitElement {
         <!-- TODO: Remove the flash-of-unstyled-content by creating a new class that has all the tailwind styles
          and inherit from that instead of LitElement (there is an issue with the @customElement annotation that needs
          to be solved)-->
-        <link rel="stylesheet" href="./images/tw.css">
+        <link rel="stylesheet" href="/assets/uprtcl/tw.css">
 
         <div class='container bg-white'>
           ${ this.options.map((option) => {

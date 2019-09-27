@@ -3,7 +3,7 @@ let env = 'development'
 
 export const holochainEnabled = false;
 export const c1Enabled = true;
-export const ethEnabled = false;
+export const ethEnabled = true;
 
 export const holochainServiceProvider =
   'holochain://QmTxSxPovQyWBkTRrM1gFAbtVZUAcS1oMvzkGqihbufKSs';
@@ -22,7 +22,7 @@ export const defaultService = c1ServiceProvider;
 export const offline = env === 'development' ? true : false;
 
 export const c1Url = env === 'development' ?
-  'http://localhost:3000/uprtcl/1' :
+  'http://localhost:3100/uprtcl/1' :
   'https://uprtcl-dev.herokuapp.com/1';
 
 export const ipfsConfig = env === 'development' ?

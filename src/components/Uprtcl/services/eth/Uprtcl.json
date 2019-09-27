@@ -21869,21 +21869,27 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {
-    "3333": {
-      "events": {},
-      "links": {},
-      "address": "0x9561C133DD8580860B6b7E504bC5Aa500f0f06a7",
-      "transactionHash": "0x2df4179d6bf25e174057cfad407d36069ff0565c05ff6b6a1649551ec85c1750"
-    },
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x8374599C91b10C679ae7911f621F4277c2B82ee0",
-      "transactionHash": "0x4d68820ccfc814fae5cc7a2a63054532f8cd6d54f9dfe3297f6ef25537cd6e1a"
+      "address": "0x6fcE1eD1b0C9b9892491fFbE9f2EeD53A52E8512",
+      "transactionHash": "0x50b8bc152f86e0f1dcf34a1049240cff84654141200b466f52672a44f268160b"
+    },
+    "1569405826812": {
+      "events": {},
+      "links": {},
+      "address": "0x71E02441209d3dd9Ed064A4E4EafAf90D0263088",
+      "transactionHash": "0x8554a47e35aa7eee2b3f3564bb3439f8ef62e85574364912ac2803a2a737d837"
+    },
+    "1512051714758": {
+      "events": {},
+      "links": {},
+      "address": "0xfd87166Aa4BF51275581C9a6817B3Bc33d866945",
+      "transactionHash": "0xadd8f63cf7b6ebb852a1f69ee8838c2e6b7fb160556891ee73fc03ee909f5fe9"
     }
   },
   "schemaVersion": "3.0.9",
-  "updatedAt": "2019-09-23T07:28:07.805Z",
+  "updatedAt": "2019-09-27T09:25:19.127Z",
   "devdoc": {
     "methods": {}
   },
@@ -21907,14 +21913,11 @@
       "getRequest(bytes32)": {
         "notice": "Get the perspective owner and head from its ID "
       },
-      "initRequest(bytes32,bytes32,address,uint32,(bytes32,string,uint8)[],address[])": {
+      "initRequest(bytes32,bytes32,address,uint32,(bytes32,string,uint8)[],address[],string,string)": {
         "notice": "Creates a new request owned and initialize its properties. The id of the request is derived from the message sender to prevent frontrunning attacks. "
       },
       "updateHeads((bytes32,string,uint8)[])": {
         "notice": "One method to execute the head updates directly, without creating the request. Useful if the owner dont want to use the request authorization feature. It also works for updating one single perspective "
-      },
-      "initRequest(bytes32,bytes32,address,uint32,(bytes32,string,uint8)[],address[],string,string)": {
-        "notice": "Creates a new request owned and initialize its properties. The id of the request is derived from the message sender to prevent frontrunning attacks. "
       }
     },
     "notice": "Underscore Protocol Ethereum Service used to store the content of _Prtcl perspectives "

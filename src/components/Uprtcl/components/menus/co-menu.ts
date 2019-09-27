@@ -181,21 +181,21 @@ export class CoMenu extends connect(store)(LitElement) {
   menuOptions(): Array<MenuOption> {
     let options: Array<MenuOption> = [];
 
-    options.push({ value: MenuOptions.info, text: 'Context info', url: './images/app/info.svg', disabled: false });
-    options.push({ value: MenuOptions.commit, text: 'Commit changes', url: './images/app/net.svg', disabled: false });
-    options.push({ value: MenuOptions.pull, text: 'Pull changes', url: './images/app/pull.svg', disabled: false });
-    if (this.parentId) options.push({ value: MenuOptions.newPerspectiveHere, text: 'New perspective (here)', url: './images/app/lowercase.svg', disabled: false });
-    options.push({ value: MenuOptions.newPerspectiveOut, text: `New perspective ${this.parentId ? '(outside)' : ''}`, url: './images/app/lowercase.svg', disabled: false });
+    options.push({ value: MenuOptions.info, text: 'Context info', url: '/assets/uprtcl/info.svg', disabled: false });
+    options.push({ value: MenuOptions.commit, text: 'Commit changes', url: '/assets/uprtcl/net.svg', disabled: false });
+    options.push({ value: MenuOptions.pull, text: 'Pull changes', url: '/assets/uprtcl/pull.svg', disabled: false });
+    if (this.parentId) options.push({ value: MenuOptions.newPerspectiveHere, text: 'New perspective (here)', url: '/assets/uprtcl/lowercase.svg', disabled: false });
+    options.push({ value: MenuOptions.newPerspectiveOut, text: `New perspective ${this.parentId ? '(outside)' : ''}`, url: '/assets/uprtcl/lowercase.svg', disabled: false });
     options.push({ value: MENU_SEPARATOR, text: '', url: '', disabled: false });
-    options.push({ value: MenuOptions.title, text: 'Title', url: './images/app/uppercase.svg', disabled: false });
-    options.push({ value: MenuOptions.paragraph, text: 'Paragraph', url: './images/app/lowercase.svg', disabled: false });
+    options.push({ value: MenuOptions.title, text: 'Title', url: '/assets/uprtcl/uppercase.svg', disabled: false });
+    options.push({ value: MenuOptions.paragraph, text: 'Paragraph', url: '/assets/uprtcl/lowercase.svg', disabled: false });
     if (this.parentId) options.push({ value: MENU_SEPARATOR, text: '', url: '', disabled: false });
-    if (this.parentId) options.push({ value: MenuOptions.go, text: 'Go', url: './images/app/go.svg', disabled: false });
-    if (this.parentId) options.push({ value: MenuOptions.remove, text: 'Remove', url: './images/app/lowercase.svg', disabled: false });
-    if (this.parentId) options.push({ value: MenuOptions.addBefore, text: 'Add before', url: './images/app/lowercase.svg', disabled: false });
-    if (this.parentId) options.push({ value: MenuOptions.addAfter, text: 'Add after', url: './images/app/lowercase.svg', disabled: false });
+    if (this.parentId) options.push({ value: MenuOptions.go, text: 'Go', url: '/assets/uprtcl/go.svg', disabled: false });
+    if (this.parentId) options.push({ value: MenuOptions.remove, text: 'Remove', url: '/assets/uprtcl/lowercase.svg', disabled: false });
+    if (this.parentId) options.push({ value: MenuOptions.addBefore, text: 'Add before', url: '/assets/uprtcl/lowercase.svg', disabled: false });
+    if (this.parentId) options.push({ value: MenuOptions.addAfter, text: 'Add after', url: '/assets/uprtcl/lowercase.svg', disabled: false });
     options.push({ value: MENU_SEPARATOR, text: '', url: '', disabled: false });
-    options.push({ value: MenuOptions.close, text: 'Close', url: './images/app/close.svg', disabled: false });
+    options.push({ value: MenuOptions.close, text: 'Close', url: '/assets/uprtcl/close.svg', disabled: false });
 
     return options;
   }
@@ -259,13 +259,13 @@ export class CoMenu extends connect(store)(LitElement) {
 
   protected render() {
     return html`
-      <link rel="stylesheet" href="./images/tw.css">
+      <link rel="stylesheet" href="/assets/uprtcl/tw.css">
 
       <div id="menuButton" class=''>
         <img 
           @click=${this.onButtonClick} 
           class='button' 
-          src='./images/app/menu_gray.svg'/>
+          src='/assets/uprtcl/menu_gray.svg'/>
       </div>
 
       ${ this.showMenu ? html`

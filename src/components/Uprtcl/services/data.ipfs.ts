@@ -31,8 +31,8 @@ export class DataIpfs implements DataService {
 
     let dataPlain = {
       text: data.text,
-      type: data.type,
-      links: data.links
+      links: data.links,
+      doc_node_type: data.doc_node_type
     };
 
     const dataId = await this.ipfsClient.addObject(dataPlain, this.cidConfig);
